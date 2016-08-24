@@ -323,6 +323,7 @@ exports.commands = {
 			yellow: '#yellow',
 			zinnia: '#zinnia',
 			clemont: '#clemont',
+			showtan: '#showtan',
 		};
 		if (avatarid in avatarTable) {
 			avatar = avatarTable[avatarid];
