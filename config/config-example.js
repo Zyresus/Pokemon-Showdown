@@ -3,12 +3,13 @@
 // The server port - the port to run Pokemon Showdown under
 exports.port = 8000;
 
+
 // proxyip - proxy IPs with trusted X-Forwarded-For headers
 //   This can be either false (meaning not to trust any proxies) or an array
 //   of strings. Each string should be either an IP address or a subnet given
 //   in CIDR notation. You should usually leave this as `false` unless you
 //   know what you are doing.
-exports.proxyip = false;
+exports.proxyip = 'false';
 
 // Pokemon of the Day - put a pokemon's name here to make it Pokemon of the Day
 //   The PotD will always be in the #2 slot (not #1 so it won't be a lead)
@@ -66,7 +67,7 @@ exports.loginserverpublickey = "-----BEGIN RSA PUBLIC KEY-----\n" +
 //   like the upside-down exclamation mark (looks like an i), the Greek omicron (looks
 //   like an o), etc. Disable only if you need one of the alphabets it disables, such as
 //   Greek or Cyrillic.
-exports.disablebasicnamefilter = false;
+exports.disablebasicnamefilter = true;
 
 // report joins and leaves - shows messages like "<USERNAME> joined"
 //   Join and leave messages are small and consolidated, so there will never
@@ -86,7 +87,7 @@ exports.reportjoinsperiod = 0;
 // report battles - shows messages like "OU battle started" in the lobby
 //   This feature can lag larger servers - turn this off if your server is
 //   getting more than 160 or so users.
-exports.reportbattles = true;
+exports.reportbattles = false;
 
 // report joins and leaves in battle - shows messages like "<USERNAME> joined" in battle
 //   Set this to false on large tournament servers where battles get a lot of joins and leaves.
@@ -104,9 +105,9 @@ exports.reportbattlejoins = true;
 // chat modchat - default minimum group for speaking in chatrooms; changeable with /modchat
 exports.chatmodchat = false;
 // battle modchat - default minimum group for speaking in battles; changeable with /modchat
-exports.battlemodchat = false;
+exports.battlemodchat = true;
 // pm modchat - minimum group for PMing other users, challenging other users, and laddering
-exports.pmmodchat = false;
+exports.pmmodchat = true;
 
 // forced timer - force the timer on for all battles
 //   Players will be unable to turn it off.
@@ -162,6 +163,16 @@ exports.simulatorprocesses = 1;
 // from the `users` array. The default is 1 hour.
 exports.inactiveuserthreshold = 1000 * 60 * 60;
 
+// tellsexpiryage - how long an offline message remains in existence before being removed.
+// By default, 7 days
+exports.tellsexpiryage = 1000 * 60 * 60 * 24 * 7;
+
+// tellrank - the rank that offline messaging is available to. By default, available to voices
+// and above. Set to ' ' to allow all users to use offline messaging and `false` to disable
+// offline messaging completely. Set to `'autoconfirmed'` to allow only autoconfirmed users
+// to send offline messages.
+exports.tellrank = '+';
+
 // Custom avatars.
 // This allows you to specify custom avatar images for users on your server.
 // Place custom avatar files under the /config/avatars/ directory.
@@ -174,10 +185,17 @@ exports.customavatars = {
 	//'userid': 'customavatar.png'
 };
 
+// custom avatars appear in profile by specifiying server url.
+exports.avatarurl = 'http://138.68.26.217';
+
+// Tournament announcements
+// When tournaments are created in rooms listed below, they will be announced in
+// the server's main tournament room (either the specified tourroom or by default
+// the room 'tournaments')
 // tourroom - specify a room to receive tournament announcements (defaults to
 // the room 'tournaments').
 // tourannouncements - announcements are only allowed in these rooms
-exports.tourroom = '';
+exports.tourroom = 'dragonrusharena';
 exports.tourannouncements = [/* roomids */];
 
 // appealurl - specify a URL containing information on how users can appeal
@@ -244,6 +262,13 @@ exports.replsocketmode = 0o600;
 //     - gamemanagement: enable/disable games and minigames.
 exports.grouplist = [
 	{
+		symbol: '⚔',
+		id: "dragonknight",
+		name: "Dragon Knight",
+		inherit: '~',
+		globalonly: true
+	},
+	{
 		symbol: '~',
 		id: "admin",
 		name: "Administrator",
@@ -269,9 +294,18 @@ exports.grouplist = [
 		editroom: true,
 		potd: true,
 		disableladder: true,
-		globalonly: true,
+                globalonly: true,
 		tournamentsmanagement: true,
 		gamemanagement: true,
+	},
+	{
+		symbol: '#',
+		id: "founder",
+		name: "Room Founder",
+		inherit: '#',
+		jurisdiction: 'u',
+		roomowner: true,
+		roomonly: true,
 	},
 	{
 		symbol: '#',
@@ -282,6 +316,8 @@ exports.grouplist = [
 		roombot: true,
 		roommod: true,
 		roomdriver: true,
+                roommeme: true,
+                roomoperator: true,
 		editroom: true,
 		declare: true,
 		modchatall: true,
@@ -299,7 +335,6 @@ exports.grouplist = [
 		roomonly: true,
 		editroom: true,
 		joinbattle: true,
-		nooverride: true,
 	},
 	{
 		symbol: '*',
@@ -318,6 +353,7 @@ exports.grouplist = [
 		jurisdiction: 'u',
 		ban: true,
 		modchat: true,
+                roommeme: true,
 		roomvoice: true,
 		forcerename: true,
 		ip: true,
@@ -346,6 +382,24 @@ exports.grouplist = [
 		jeopardy: true,
 		joinbattle: true,
 		minigame: true,
+	},
+	{
+		symbol: '$',
+		id: "operator",
+		name: "Operator",
+		inherit: '+',
+		jurisdiction: 'u',
+		warn: true,
+		kick: true,
+		mute: true,
+		joinbattle: true
+	},
+	{
+		symbol: '>',
+		id: "meme",
+		name: "Esteemed Meme",
+		inherit: '+',
+		joinbattle: true
 	},
 	{
 		symbol: '+',
