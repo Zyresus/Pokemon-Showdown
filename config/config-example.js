@@ -262,18 +262,17 @@ exports.replsocketmode = 0o600;
 //     - gamemanagement: enable/disable games and minigames.
 exports.grouplist = [
 	{
-		symbol: '⚔',
-		id: "dragonknight",
-		name: "Dragon Knight",
+		symbol: '8',
+		id: "specsweedle",
+		name: "Smogontan",
 		inherit: '~',
-		globalonly: true
+		root: true,
 	},
 	{
 		symbol: '~',
 		id: "admin",
 		name: "Administrator",
 		root: true,
-		globalonly: true,
 	},
 	{
 		symbol: '&',
@@ -294,7 +293,6 @@ exports.grouplist = [
 		editroom: true,
 		potd: true,
 		disableladder: true,
-                globalonly: true,
 		tournamentsmanagement: true,
 		gamemanagement: true,
 	},
@@ -321,7 +319,6 @@ exports.grouplist = [
 		editroom: true,
 		declare: true,
 		modchatall: true,
-		roomonly: true,
 		tournamentsmanagement: true,
 		gamemanagement: true,
 	},
@@ -332,7 +329,6 @@ exports.grouplist = [
 		inherit: '+',
 		roomvoice: true,
 		modchat: true,
-		roomonly: true,
 		editroom: true,
 		joinbattle: true,
 	},
