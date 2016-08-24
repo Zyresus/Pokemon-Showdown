@@ -324,6 +324,8 @@ exports.commands = {
 			zinnia: '#zinnia',
 			clemont: '#clemont',
 			showtan: '#showtan',
+			coronis: '#coronis',
+			stretcher: '#stretcher',
 		};
 		if (avatarid in avatarTable) {
 			avatar = avatarTable[avatarid];
