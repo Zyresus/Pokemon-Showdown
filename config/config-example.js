@@ -262,7 +262,7 @@ exports.replsocketmode = 0o600;
 //     - gamemanagement: enable/disable games and minigames.
 exports.grouplist = [
 	{
-		symbol: '8',
+		symbol: '♕',
 		id: "specsweedle",
 		name: "Smogontan",
 		inherit: '~',
