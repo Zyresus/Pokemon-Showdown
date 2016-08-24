@@ -263,8 +263,8 @@ exports.replsocketmode = 0o600;
 exports.grouplist = [
 	{
 		symbol: '♕',
-		id: "specsweedle",
-		name: "Smogontan",
+		id: "smogonsan",
+		name: "Smogonsan",
 		inherit: '~',
 		root: true,
 	},
