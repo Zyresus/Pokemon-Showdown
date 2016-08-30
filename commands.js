@@ -327,6 +327,7 @@ exports.commands = {
 			coronis: '#coronis',
 			stretcher: '#stretcher',
 			maomiraeniya: '#maomiraeniya',
+			cpgtan: '#cpgtan'
 		};
 		if (avatarid in avatarTable) {
 			avatar = avatarTable[avatarid];
